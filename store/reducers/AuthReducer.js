@@ -5,7 +5,7 @@ import Immutable from 'seamless-immutable'
 
 const { Types, Creators } = createActions({
     signInRequest: ['email', 'password'],
-    signInSuccess: [],
+    signInSuccess: ['data'],
     signInFailure: null,
     tokenRequest: ['accessToken', 'client', 'uid'],
     tokenSuccess: [],
@@ -18,7 +18,7 @@ export default Creators
 /* ------------- Initial State ------------- */
 
 export const INITIAL_STATE = Immutable({
-    isLoading: null,
+    isLoading: false,
     isSignedIn: false,
     error: null,
     data: {},
@@ -26,7 +26,9 @@ export const INITIAL_STATE = Immutable({
     tokenType: null,
     client: null,
     expiry: null,
-    uid: null
+    uid: null,
+    email: '',
+    password: ''
 })
 
 /* ------------- Selectors ------------- */
@@ -37,15 +39,19 @@ export const INITIAL_STATE = Immutable({
 
 /* ------------- Reducers ------------- */
 
-export const signInRequest = (state, { email }) =>
-    state.merge({ isLoading: true, email })
+export const signInRequest = (state, { email, password }) =>
+    state.merge({ isLoading: true, isSignedIn: false, email, password })
 
 export const signInSuccess = (state, { data }) => {
+    console.log("success")
+    console.log(data)
     return state.merge({ isLoading: false, isSignedIn: true, data, error: null })
 }
 
-export const signInFailure = (state) =>
-    state.merge({ isLoading: false, error: true })
+export const signInFailure = (state) => {
+    console.log("failure")
+    return state.merge({ isLoading: false, error: true })
+}
 
 /* ------------- Hookup Reducers To Types ------------- */
 

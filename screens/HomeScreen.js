@@ -12,12 +12,17 @@ import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 
-export default class HomeScreen extends React.Component {
+import { connect } from 'react-redux'
+
+class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
 
   render() {
+    const { data, isSignedIn, email } = this.props
+    console.log(data)
+
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
@@ -35,7 +40,8 @@ export default class HomeScreen extends React.Component {
           <View style={styles.getStartedContainer}>
             {this._maybeRenderDevelopmentModeWarning()}
 
-            <Text style={styles.getStartedText}>Get started by opening</Text>
+            <Text style={styles.getStartedText}>Get started by opening {email}</Text>
+            <Text style={styles.getStartedText}>{data.address}</Text>
 
             <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
               <MonoText style={styles.codeHighlightText}>screens/HomeScreen.js</MonoText>
@@ -186,3 +192,14 @@ const styles = StyleSheet.create({
     color: '#2e78b7',
   },
 });
+
+const mapStateToProps = (state) => {
+  const { auth } = state
+  return ({
+    data: auth.data,
+    email: auth.email,
+    isSignedIn: auth.isSignedIn,
+  })
+}
+
+export default connect(mapStateToProps, null)(HomeScreen)

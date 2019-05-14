@@ -2,7 +2,7 @@
 import apisauce from 'apisauce'
 
 // our "constructor"
-const AuthApi = (baseURL = 'http://localhost:3000/') => {
+const AuthApi = (baseURL = 'http://192.168.1.115:3000/api') => {
     // ------
     // STEP 1
     // ------
@@ -14,7 +14,8 @@ const AuthApi = (baseURL = 'http://localhost:3000/') => {
         baseURL,
         // here are some default headers
         headers: {
-            'Cache-Control': 'no-cache'
+            'Cache-Control': 'no-cache',
+            'format': 'json'
         },
         // 10 second timeout...
         timeout: 10000

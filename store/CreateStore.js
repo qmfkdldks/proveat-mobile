@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import createSagaMiddleware from 'redux-saga'
-// import { createReactNavigationReduxMiddleware } from 'react-navigation-redux-helpers'
+import { createReactNavigationReduxMiddleware } from 'react-navigation-redux-helpers'
 
 // creates the store
 export default (rootReducer, rootSaga) => {
@@ -11,11 +11,10 @@ export default (rootReducer, rootSaga) => {
 
   /* ------------- Navigation Middleware ------------ */
 
-  //   const navigationMiddleware = createReactNavigationReduxMiddleware(
-  //     'root',
-  //     state => state.nav
-  //   )
-  //   middleware.push(navigationMiddleware)
+  const navigationMiddleware = createReactNavigationReduxMiddleware(
+    state => state.nav
+  )
+  middleware.push(navigationMiddleware)
 
   /* ------------- Analytics Middleware ------------- */
 
