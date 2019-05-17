@@ -4,8 +4,8 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import IncomeScreen from '../screens/IncomeScreen';
+import ExpenseScreen from '../screens/ExpenseScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -16,45 +16,41 @@ HomeStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
+      name='dashboard'
     />
   ),
 };
 
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
+const IncomeStack = createStackNavigator({
+  Income: IncomeScreen,
 });
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+IncomeStack.navigationOptions = {
+  tabBarLabel: 'Income',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
+      name='pluscircle'
     />
   ),
 };
 
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
+const ExpenseStack = createStackNavigator({
+  Expense: ExpenseScreen,
 });
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+ExpenseStack.navigationOptions = {
+  tabBarLabel: 'Expense',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
+      name='minuscircle'
     />
   ),
 };
 
 export default createBottomTabNavigator({
   HomeStack,
-  LinksStack,
-  SettingsStack,
+  IncomeStack,
+  ExpenseStack,
 });

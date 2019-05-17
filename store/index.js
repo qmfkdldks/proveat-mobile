@@ -10,7 +10,8 @@ import rootSaga from './sagas'
 export const reducers = combineReducers({
     nav: require('./reducers/NavigationReducer').reducer,
     auth: require('./reducers/AuthReducer').reducer,
-    floors: require('./reducers/FloorsReducer').reducer
+    floors: require('./reducers/FloorsReducer').reducer,
+    ledgersStore: require('./reducers/LedgersReducer').reducer
 })
 
 export default () => {

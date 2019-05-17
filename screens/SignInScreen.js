@@ -13,17 +13,22 @@ import { connect } from 'react-redux';
 import AuthActions from '../store/reducers/AuthReducer';
 
 class SignInScreen extends React.Component {
+  static navigationOptions = {
+    title: 'Please sign in',
+  }
+
   constructor(props) {
     super(props)
+
     this.state = {
       email: 'company2@gmail.com',
       password: '007rkdqm'
     };
   }
 
-  static navigationOptions = {
-    title: 'Please sign in',
-  };
+  _signInAsync = () => {
+    this.props.signInRequest(this.state.email, this.state.password)
+  }
 
   render() {
     const { email, password } = this.state
@@ -44,15 +49,8 @@ class SignInScreen extends React.Component {
       </View>
     );
   }
-
-  _signInAsync = () => {
-    this.props.signInRequest(this.state.email, this.state.password)
-    // AsyncStorage.setItem('userToken', 'abc');
-    // this.props.navigation.navigate('AuthLoading');
-  };
 }
 
-// wraps dispatch to create nicer functions to call within our component
 const mapDispatchToProps = (dispatch) => ({
   signInRequest: (email, password) => dispatch(AuthActions.signInRequest(email, password))
 })

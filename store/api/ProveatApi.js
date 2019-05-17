@@ -85,6 +85,8 @@ const ProveatApi = (baseURL = 'http://192.168.0.61:3000/api/v1') => {
     const validateToken = (accessToken, client, uid) => api.get('companies/auth/validate_token', { 'access-token': accessToken, client: client, uid: uid })
     const signIn = (email, password) => api.post('companies/auth/sign_in', { email, password })
     const floorsIndex = () => api.get('companies/floors')
+    const ledgersIndex = () => api.get('companies/ledgers')
+    const ledgersCreate = ({ description, tag_list, total }) => api.post('companies/ledgers', { ledger: { description, tag_list, total } })
 
     // ------
     // STEP 3
@@ -102,7 +104,9 @@ const ProveatApi = (baseURL = 'http://192.168.0.61:3000/api/v1') => {
         // a list of the API functions from step 2
         validateToken,
         signIn,
-        floorsIndex
+        floorsIndex,
+        ledgersIndex,
+        ledgersCreate
     }
 }
 

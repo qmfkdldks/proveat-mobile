@@ -14,8 +14,7 @@ import { WebBrowser } from 'expo';
 import { MonoText } from '../components/StyledText';
 
 import { connect } from 'react-redux'
-
-import FloorsActions from '../store/reducers/FloorsReducer'
+import LedgersActions from '../store/reducers/LedgersReducer'
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -23,7 +22,7 @@ class HomeScreen extends React.Component {
   };
 
   render() {
-    const { data, isSignedIn, email, floors } = this.props
+    const { email, ledgers } = this.props
 
     return (
       <View style={styles.container}>
@@ -37,77 +36,26 @@ class HomeScreen extends React.Component {
               }
               style={styles.welcomeImage}
             />
+
           </View>
-
           <View style={styles.getStartedContainer}>
-            {this._maybeRenderDevelopmentModeWarning()}
-
             <Text style={styles.getStartedText}>Get started by opening {email}</Text>
             <Text style={styles.getStartedText}></Text>
             {
-              floors.map((floor) => <Text key={floor.id} style={styles.getStartedText}>{floor.name}</Text>)
+              ledgers.map((ledger) => <Text key={ledger.id} style={styles.getStartedText}>{ledger.total}</Text>)
             }
             <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
               <MonoText style={styles.codeHighlightText}>screens/HomeScreen.js</MonoText>
             </View>
 
-            <Button title="Get Floors" onPress={this.props.floorsIndexRequest} />
+            <Button title="Get Ledgers" onPress={this.props.ledgersIndexRequest} />
 
-            <Text style={styles.getStartedText}>
-              Change this text and your app will automatically reload.
-            </Text>
-          </View>
-
-          <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={this._handleHelpPress} style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>Help, it didn’t automatically reload!</Text>
-            </TouchableOpacity>
           </View>
         </ScrollView>
-
-        <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
-
-          <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-            <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
-          </View>
-        </View>
       </View>
     );
   }
 
-  _maybeRenderDevelopmentModeWarning() {
-    if (__DEV__) {
-      const learnMoreButton = (
-        <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          Learn more
-        </Text>
-      );
-
-      return (
-        <Text style={styles.developmentModeText}>
-          Development mode is enabled, your app will be slower but you can use useful development
-          tools. {learnMoreButton}
-        </Text>
-      );
-    } else {
-      return (
-        <Text style={styles.developmentModeText}>
-          You are not in development mode, your app will run at full speed.
-        </Text>
-      );
-    }
-  }
-
-  _handleLearnMorePress = () => {
-    WebBrowser.openBrowserAsync('https://docs.expo.io/versions/latest/guides/development-mode');
-  };
-
-  _handleHelpPress = () => {
-    WebBrowser.openBrowserAsync(
-      'https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes'
-    );
-  };
 }
 
 const styles = StyleSheet.create({
@@ -158,7 +106,7 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     textAlign: 'center',
   },
-  tabBarInfoContainer: {
+  InfoContainer: {
     position: 'absolute',
     bottom: 0,
     left: 0,
@@ -200,16 +148,16 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => {
-  const { auth, floors } = state
+  const { auth, ledgersStore } = state
 
   return ({
     isSignedIn: auth.isSignedIn,
-    floors: floors.floors
+    ledgers: ledgersStore.ledgers
   })
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  floorsIndexRequest: () => dispatch(FloorsActions.floorsIndexRequest())
+  ledgersIndexRequest: () => dispatch(LedgersActions.ledgersIndexRequest())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)
