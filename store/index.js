@@ -9,7 +9,8 @@ import rootSaga from './sagas'
 /* ------------- Assemble The Reducers ------------- */
 export const reducers = combineReducers({
     nav: require('./reducers/NavigationReducer').reducer,
-    auth: require('./reducers/AuthReducer').reducer
+    auth: require('./reducers/AuthReducer').reducer,
+    floors: require('./reducers/FloorsReducer').reducer
 })
 
 export default () => {

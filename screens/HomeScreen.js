@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
+  Button,
   View,
 } from 'react-native';
 import { WebBrowser } from 'expo';
@@ -14,14 +15,15 @@ import { MonoText } from '../components/StyledText';
 
 import { connect } from 'react-redux'
 
+import FloorsActions from '../store/reducers/FloorsReducer'
+
 class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
 
   render() {
-    const { data, isSignedIn, email } = this.props
-    console.log(data)
+    const { data, isSignedIn, email, floors } = this.props
 
     return (
       <View style={styles.container}>
@@ -41,11 +43,15 @@ class HomeScreen extends React.Component {
             {this._maybeRenderDevelopmentModeWarning()}
 
             <Text style={styles.getStartedText}>Get started by opening {email}</Text>
-            <Text style={styles.getStartedText}>{data.address}</Text>
-
+            <Text style={styles.getStartedText}></Text>
+            {
+              floors.map((floor) => <Text key={floor.id} style={styles.getStartedText}>{floor.name}</Text>)
+            }
             <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
               <MonoText style={styles.codeHighlightText}>screens/HomeScreen.js</MonoText>
             </View>
+
+            <Button title="Get Floors" onPress={this.props.floorsIndexRequest} />
 
             <Text style={styles.getStartedText}>
               Change this text and your app will automatically reload.
@@ -194,12 +200,16 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => {
-  const { auth } = state
+  const { auth, floors } = state
+
   return ({
-    data: auth.data,
-    email: auth.email,
     isSignedIn: auth.isSignedIn,
+    floors: floors.floors
   })
 }
 
-export default connect(mapStateToProps, null)(HomeScreen)
+const mapDispatchToProps = (dispatch) => ({
+  floorsIndexRequest: () => dispatch(FloorsActions.floorsIndexRequest())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)

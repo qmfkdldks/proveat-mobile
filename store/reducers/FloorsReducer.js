@@ -4,23 +4,20 @@ import Immutable from 'seamless-immutable'
 /* ------------- Types and Action Creators ------------- */
 
 const { Types, Creators } = createActions({
-    signInRequest: ['email', 'password'],
-    signInSuccess: ['data'],
-    signInFailure: null
+    floorsIndexRequest: null,
+    floorsIndexSuccess: ['response'],
+    floorsIndexFailure: null
 })
 
-export const AuthTypes = Types
+export const FloorsTypes = Types
 export default Creators
 
 /* ------------- Initial State ------------- */
 
 export const INITIAL_STATE = Immutable({
     isLoading: false,
-    isSignedIn: false,
     error: null,
-    data: {},
-    email: '',
-    password: ''
+    floors: []
 })
 
 /* ------------- Selectors ------------- */
@@ -31,21 +28,22 @@ export const INITIAL_STATE = Immutable({
 
 /* ------------- Reducers ------------- */
 
-export const signInRequest = (state, { email, password }) =>
-    state.merge({ isLoading: true, isSignedIn: false, email, password })
+export const floorsIndexRequest = (state) =>
+    state.merge({ isLoading: true })
 
-export const signInSuccess = (state, { data }) => {
-    return state.merge({ isLoading: false, isSignedIn: true, data, error: null })
+export const floorsIndexSuccess = (state, { response }) => {
+    const data = response.data
+    return state.merge({ isLoading: false, floors: data, error: null })
 }
 
-export const signInFailure = (state) => {
+export const floorsIndexFailure = (state) => {
     return state.merge({ isLoading: false, error: true })
 }
 
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
-    [Types.SIGN_IN_REQUEST]: signInRequest,
-    [Types.SIGN_IN_SUCCESS]: signInSuccess,
-    [Types.SIGN_IN_FAILURE]: signInFailure,
+    [Types.FLOORS_INDEX_REQUEST]: floorsIndexRequest,
+    [Types.FLOORS_INDEX_SUCCESS]: floorsIndexSuccess,
+    [Types.FLOORS_INDEX_FAILURE]: floorsIndexFailure
 })
