@@ -3,7 +3,7 @@ import apisauce from 'apisauce'
 import { AsyncStorage } from 'react-native'
 
 // our "constructor"
-const ProveatApi = (baseURL = 'http://192.168.0.61:3000/api/v1') => {
+const ProveatApi = (baseURL = 'http://192.168.43.192:3000/api/v1') => {
     // ------
     // STEP 1
     // ------

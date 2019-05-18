@@ -10,8 +10,8 @@ export default class IncomeScreen extends React.Component {
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
-        <LedgerForm />
+      <View style={{ flex: 1, padding: 4 }}>
+        <LedgerForm tag_list={["income"]} />
       </View>
     );
   }

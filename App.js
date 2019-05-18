@@ -3,6 +3,8 @@ import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import ReduxNavigator from './navigation/ReduxNavigator';
 
+import { Provider as PaperProvider } from 'react-native-paper';
+
 import { Provider } from 'react-redux'
 import createStore from './store'
 // create our store
@@ -26,10 +28,12 @@ export default class App extends React.Component {
     } else {
       return (
         <Provider store={store}>
-          <View style={styles.container}>
-            {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-            <ReduxNavigator />
-          </View>
+          <PaperProvider>
+            <View style={styles.container}>
+              {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+              <ReduxNavigator />
+            </View>
+          </PaperProvider>
         </Provider>
       );
     }
