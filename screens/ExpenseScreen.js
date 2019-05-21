@@ -10,8 +10,8 @@ class ExpenseScreen extends React.Component {
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
-        <LedgerForm tag_list={["expense"]} />
+      <View style={{ flex: 1, padding: 4 }}>
+        <LedgerForm minus={true} tag_list={["expense"]} />
       </View>
     )
   }

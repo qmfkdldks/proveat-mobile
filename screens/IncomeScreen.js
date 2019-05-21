@@ -1,6 +1,5 @@
 import React from 'react'
-import { View } from 'react-native'
-import { ScrollView } from 'react-native'
+import { View, ScrollView } from 'react-native'
 import LedgerForm from '../components/LedgerForm'
 
 export default class IncomeScreen extends React.Component {
@@ -10,9 +9,9 @@ export default class IncomeScreen extends React.Component {
 
   render() {
     return (
-      <View style={{ flex: 1, padding: 4 }}>
+      <ScrollView style={{ flex: 1, padding: 4 }}>
         <LedgerForm tag_list={["income"]} />
-      </View>
+      </ScrollView>
     );
   }
 }

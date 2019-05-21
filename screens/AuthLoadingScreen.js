@@ -13,7 +13,7 @@ import ProveatApi from '../store/api/ProveatApi'
 class AuthLoadingScreen extends React.Component {
 
     componentDidMount() {
-        this._bootstrapAsync()
+        // this._bootstrapAsync()
     }
 
     // Fetch the token from storage then navigate to our appropriate place

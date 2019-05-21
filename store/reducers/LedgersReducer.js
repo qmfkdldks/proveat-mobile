@@ -48,7 +48,7 @@ export const ledgersCreateRequest = (state) =>
 
 export const ledgersCreateSuccess = (state, { data }) => {
     const new_ledgers = [...state.ledgers, data]
-    console.log(new_ledgers)
+    // console.log(new_ledgers)
     return state.merge({ isLoading: false, ledgers: new_ledgers, error: [] })
 }
 

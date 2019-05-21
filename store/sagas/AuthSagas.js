@@ -17,3 +17,18 @@ export function* SignInSaga(api, action) {
         yield put(AuthActions.signInFailure())
     }
 }
+
+export function* SignOutSaga(api) {
+    // const { email, password } = action
+    // make the call to the api
+    const response = yield call(api.signOut)
+
+    if (response.ok) {
+        // do data conversion here if needed
+        console.log(response.data)
+        yield put(AuthActions.signOutSuccess())
+        yield put(NavigationActions.navigate({ routeName: 'AuthLoading' }));
+    } else {
+        yield put(AuthActions.signOutFailure())
+    }
+}

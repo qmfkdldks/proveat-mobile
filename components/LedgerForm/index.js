@@ -23,6 +23,10 @@ class LedgerForm extends React.Component {
         this.props.ledgersCreate({ description, tag_list, total })
     }
 
+    onChangeCalculator = (value) => {
+        value = (this.props.minus) ? -1 * value : value
+        this.setState({ total: value })
+    }
 
     render() {
         const { description, tag_list, total } = this.state
@@ -30,13 +34,13 @@ class LedgerForm extends React.Component {
             <View style={{ flex: 1, padding: 10 }}>
                 <CalculatorInput
                     value={total}
-                    onChange={(value) => this.setState({ total: value })}
+                    onChange={this.onChangeCalculator}
                     // hasAcceptButton
                     style={{ flex: 1 }}
                     roundTo={2} />
                 <TextInput mode="outlined" label="description" placeholder="Note goes here" multiline numberOfLines={3} />
                 <TagInput tag_list={tag_list} />
-                <Button icon="done" mode="contained" onPress={this.createLedger} style={{ alignSelf: "flex-end" }}>Create!</Button>
+                <Button icon="done" mode="contained" onPress={this.createLedger} style={{ alignSelf: "flex-end", backgroundColor: "#f81842" }}>Create!</Button>
             </View>
         )
     }

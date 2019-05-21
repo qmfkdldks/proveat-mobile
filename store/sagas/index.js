@@ -8,7 +8,7 @@ import { LedgersTypes } from '../reducers/LedgersReducer'
 
 /* ------------- Sagas ------------- */
 
-import { SignInSaga } from './AuthSagas'
+import { SignInSaga, SignOutSaga } from './AuthSagas'
 import { FloorsIndexSaga } from './FloorsSagas'
 import { LedgersIndexSaga, LedgersCreateSaga } from './LedgersSagas'
 
@@ -31,6 +31,7 @@ export default function* root() {
 
         // some sagas receive extra parameters in addition to an action
         takeLatest(AuthTypes.SIGN_IN_REQUEST, SignInSaga, apiObj),
+        takeLatest(AuthTypes.SIGN_OUT_REQUEST, SignOutSaga, apiObj),
         takeLatest(FloorsTypes.FLOORS_INDEX_REQUEST, FloorsIndexSaga, apiObj),
         takeLatest(LedgersTypes.LEDGERS_INDEX_REQUEST, LedgersIndexSaga, apiObj),
         takeLatest(LedgersTypes.LEDGERS_CREATE_REQUEST, LedgersCreateSaga, apiObj)

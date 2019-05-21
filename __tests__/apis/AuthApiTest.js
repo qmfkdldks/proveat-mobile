@@ -8,4 +8,6 @@ describe('ProveatApi', () => {
     const response = await api.signIn("company2@gmail.com", "007rkdqm")
     expect(response.status).toBe(200)
   })
+
+  it('should ')
 });

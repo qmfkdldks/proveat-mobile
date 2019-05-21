@@ -1,17 +1,18 @@
-import React from 'react';
-
+import React from 'react'
+import { connect } from 'react-redux'
 import {
   Image,
   Platform,
   ScrollView,
   Text,
-  TouchableOpacity,
   StyleSheet,
-  Button,
   View,
-} from 'react-native';
+} from 'react-native'
+import { IconButton } from 'react-native-paper'
 
-import LedgersContainer from '../components/LedgersContainer';
+import LedgersContainer from '../components/LedgersContainer'
+
+import AuthActions from '../store/reducers/AuthReducer'
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -24,6 +25,13 @@ class HomeScreen extends React.Component {
       <React.Fragment>
         <View style={styles.container}>
           <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+            <View style={{ flex: 1 }}>
+              <IconButton
+                icon="exit-to-app"
+                size={20}
+                onPress={this.props.signOutRequest}
+              />
+            </View>
             <View style={styles.welcomeContainer}>
               <Image
                 source={
@@ -78,5 +86,8 @@ const styles = StyleSheet.create({
   },
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  signOutRequest: () => dispatch(AuthActions.signOutRequest())
+})
 
-export default HomeScreen
+export default connect(null, mapDispatchToProps)(HomeScreen)
