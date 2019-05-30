@@ -5,12 +5,14 @@ import { takeLatest, all, put } from 'redux-saga/effects'
 import AuthActions, { AuthTypes } from '../reducers/AuthReducer'
 import { FloorsTypes } from '../reducers/FloorsReducer'
 import { LedgersTypes } from '../reducers/LedgersReducer'
+import { OrdersTypes } from '../reducers/OrdersReducer'
 
 /* ------------- Sagas ------------- */
 
 import { SignInSaga, SignOutSaga } from './AuthSagas'
 import { FloorsIndexSaga } from './FloorsSagas'
 import { LedgersIndexSaga, LedgersCreateSaga } from './LedgersSagas'
+import { OrdersIndexSaga } from './OrdersSagas'
 
 /* ------------- API ------------- */
 
@@ -33,6 +35,7 @@ export default function* root() {
         takeLatest(AuthTypes.SIGN_IN_REQUEST, SignInSaga, apiObj),
         takeLatest(AuthTypes.SIGN_OUT_REQUEST, SignOutSaga, apiObj),
         takeLatest(FloorsTypes.FLOORS_INDEX_REQUEST, FloorsIndexSaga, apiObj),
+        takeLatest(OrdersTypes.ORDERS_INDEX_REQUEST, OrdersIndexSaga, apiObj),
         takeLatest(LedgersTypes.LEDGERS_INDEX_REQUEST, LedgersIndexSaga, apiObj),
         takeLatest(LedgersTypes.LEDGERS_CREATE_REQUEST, LedgersCreateSaga, apiObj)
     ])

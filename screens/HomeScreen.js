@@ -10,7 +10,7 @@ import {
 } from 'react-native'
 import { IconButton } from 'react-native-paper'
 
-import LedgersContainer from '../components/LedgersContainer'
+import RecordsContainer from '../components/RecordsContainer'
 
 import AuthActions from '../store/reducers/AuthReducer'
 
@@ -24,7 +24,7 @@ class HomeScreen extends React.Component {
     return (
       <React.Fragment>
         <View style={styles.container}>
-          <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+          <View style={styles.container} contentContainerStyle={styles.contentContainer}>
             <View style={{ flex: 1 }}>
               <IconButton
                 icon="exit-to-app"
@@ -43,8 +43,8 @@ class HomeScreen extends React.Component {
             <View style={styles.getStartedContainer}>
               <Text style={styles.getStartedText}>Get started by opening</Text>
             </View>
-            <LedgersContainer />
-          </ScrollView>
+            <RecordsContainer />
+          </View>
         </View>
       </React.Fragment>
 

@@ -5,7 +5,7 @@ import Immutable from 'seamless-immutable'
 
 const { Types, Creators } = createActions({
     floorsIndexRequest: null,
-    floorsIndexSuccess: ['response'],
+    floorsIndexSuccess: ['data'],
     floorsIndexFailure: null
 })
 
@@ -31,8 +31,7 @@ export const INITIAL_STATE = Immutable({
 export const floorsIndexRequest = (state) =>
     state.merge({ isLoading: true })
 
-export const floorsIndexSuccess = (state, { response }) => {
-    const data = response.data
+export const floorsIndexSuccess = (state, { data }) => {
     return state.merge({ isLoading: false, floors: data, error: null })
 }
 

@@ -10,8 +10,7 @@ export function* SignInSaga(api, action) {
 
     if (response.ok) {
         // do data conversion here if needed
-        const data = response.data.data
-        yield put(AuthActions.signInSuccess(data))
+        yield put(AuthActions.signInSuccess(response.data.data))
         yield put(NavigationActions.navigate({ routeName: 'Main' }));
     } else {
         yield put(AuthActions.signInFailure())
@@ -25,7 +24,6 @@ export function* SignOutSaga(api) {
 
     if (response.ok) {
         // do data conversion here if needed
-        console.log(response.data)
         yield put(AuthActions.signOutSuccess())
         yield put(NavigationActions.navigate({ routeName: 'AuthLoading' }));
     } else {

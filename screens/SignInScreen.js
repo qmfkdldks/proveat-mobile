@@ -29,7 +29,6 @@ class SignInScreen extends React.Component {
 
   render() {
     const { email, password } = this.state
-    const { colors } = this.props.theme
 
     return (
       <View style={styles.container}>

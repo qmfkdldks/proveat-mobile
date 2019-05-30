@@ -13,7 +13,7 @@ import ProveatApi from '../store/api/ProveatApi'
 class AuthLoadingScreen extends React.Component {
 
     componentDidMount() {
-        // this._bootstrapAsync()
+        this._bootstrapAsync()
     }
 
     // Fetch the token from storage then navigate to our appropriate place
@@ -39,15 +39,5 @@ class AuthLoadingScreen extends React.Component {
         )
     }
 }
-
-// const mapStateToProps = (state) => {
-//     const { auth } = state
-//     return ({
-//         isLoading: auth.isLoading,
-//         isSignedIn: auth.isSignedIn
-//     })
-// }
-
-// export default connect(mapStateToProps, null)(AuthLoadingScreen)
 
 export default AuthLoadingScreen

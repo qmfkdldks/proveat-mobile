@@ -6,7 +6,7 @@ export function* FloorsIndexSaga(api, action) {
     const response = yield call(api.floorsIndex)
 
     if (response.ok) {
-        yield put(FloorsActions.floorsIndexSuccess(response))
+        yield put(FloorsActions.floorsIndexSuccess(response.data))
     } else {
         yield put(FloorsActions.floorsIndexFailure())
     }

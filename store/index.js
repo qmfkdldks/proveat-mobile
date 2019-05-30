@@ -11,7 +11,8 @@ export const reducers = combineReducers({
     nav: require('./reducers/NavigationReducer').reducer,
     auth: require('./reducers/AuthReducer').reducer,
     floors: require('./reducers/FloorsReducer').reducer,
-    ledgersStore: require('./reducers/LedgersReducer').reducer
+    ledgersStore: require('./reducers/LedgersReducer').reducer,
+    ordersStore: require('./reducers/OrdersReducer').reducer
 })
 
 export default () => {

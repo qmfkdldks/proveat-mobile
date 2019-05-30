@@ -5311,6 +5311,11 @@ mkdirp@^0.5.0, mkdirp@^0.5.1:
   dependencies:
     minimist "0.0.8"
 
+moment-range@2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/moment-range/-/moment-range-2.2.0.tgz#b02575778a4ac50a65777939f5c5d757f83fcd85"
+  integrity sha1-sCV1d4pKxQpld3k59cXXV/g/zYU=
+
 moment-timezone@^0.5.23:
   version "0.5.25"
   resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.25.tgz#a11bfa2f74e088327f2cd4c08b3e7bdf55957810"
@@ -5318,7 +5323,7 @@ moment-timezone@^0.5.23:
   dependencies:
     moment ">= 2.9.0"
 
-"moment@>= 2.9.0", moment@^2.22.2:
+"moment@>= 2.9.0", moment@^2.17.1, moment@^2.22.2:
   version "2.24.0"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
   integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
@@ -6122,6 +6127,14 @@ react-native-calculator@^0.5.2:
   resolved "https://registry.yarnpkg.com/react-native-calculator/-/react-native-calculator-0.5.2.tgz#e71f94f8601382b50a55ef21d5776c7f827b5ac3"
   integrity sha512-KAsWEP9a56r8RyORudx+YGvMhTYdIK4eJ2Gcps1Yu6r1OszFziaKASDnvlFN8uTOFwAwGGsacj8cMJtV3D8hQA==
 
+react-native-dates@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/react-native-dates/-/react-native-dates-2.0.4.tgz#155780ebdede82504ce42c14d5981219d434b181"
+  integrity sha1-FVeA697eglBM5CwU1ZgSGdQ0sYE=
+  dependencies:
+    moment "^2.17.1"
+    moment-range "2.2.0"
+
 react-native-gesture-handler@~1.0.14:
   version "1.0.17"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.0.17.tgz#a046f371f277092157fc2781323d35a02a93daaf"
@@ -6130,6 +6143,15 @@ react-native-gesture-handler@~1.0.14:
     hoist-non-react-statics "^2.3.1"
     invariant "^2.2.2"
     prop-types "^15.5.10"
+
+react-native-infinite-scroll-view@^0.4.5:
+  version "0.4.5"
+  resolved "https://registry.yarnpkg.com/react-native-infinite-scroll-view/-/react-native-infinite-scroll-view-0.4.5.tgz#5200590519716ee0694f12b81d2f091b6df4571f"
+  integrity sha512-k0POtHqrCyQ75EQXB0raN20lt+UlOC1VbyOPb7lFJ8bUUJ+MMGKR7YkSZ2Sh+nPZ3V2NR9URTPIbPigbp1kjnw==
+  dependencies:
+    prop-types "^15.6.2"
+    react-clone-referenced-element "^1.0.1"
+    react-native-scrollable-mixin "^1.0.0"
 
 react-native-maps@expo/react-native-maps#v0.22.1-exp.0:
   version "0.22.1"
@@ -6182,6 +6204,11 @@ react-native-screens@1.0.0-alpha.22, "react-native-screens@^1.0.0 || ^1.0.0-alph
   version "1.0.0-alpha.22"
   resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-1.0.0-alpha.22.tgz#7a120377b52aa9bbb94d0b8541a014026be9289b"
   integrity sha512-kSyAt0AeVU6N7ZonfV6dP6iZF8B7Bce+tk3eujXhzBGsLg0VSLnU7uE9VqJF0xdQrHR91ZjGgVMieo/8df9KTA==
+
+react-native-scrollable-mixin@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-scrollable-mixin/-/react-native-scrollable-mixin-1.0.1.tgz#34a32167b64248594154fd0d6a8b03f22740548e"
+  integrity sha1-NKMhZ7ZCSFlBVP0NaosD8idAVI4=
 
 react-native-svg@8.0.10:
   version "8.0.10"
@@ -6611,6 +6638,11 @@ reselect@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/reselect/-/reselect-3.0.1.tgz#efdaa98ea7451324d092b2b2163a6a1d7a9a2147"
   integrity sha1-79qpjqdFEyTQkrKyFjpqHXqaIUc=
+
+reselect@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/reselect/-/reselect-4.0.0.tgz#f2529830e5d3d0e021408b246a206ef4ea4437f7"
+  integrity sha512-qUgANli03jjAyGlnbYVAV5vvnOmJnODyABz51RdBN7M4WaVu8mecZWgyQNkG8Yqe3KRGRt0l4K4B3XVEULC4CA==
 
 resolve-cwd@^2.0.0:
   version "2.0.0"

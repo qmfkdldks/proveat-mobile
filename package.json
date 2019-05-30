@@ -18,6 +18,8 @@
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
     "react-native-calculator": "^0.5.2",
+    "react-native-dates": "^2.0.4",
+    "react-native-infinite-scroll-view": "^0.4.5",
     "react-native-paper": "^2.15.2",
     "react-native-tags": "^2.1.0",
     "react-navigation": "^3.0.9",
@@ -26,6 +28,7 @@
     "redux": "^4.0.1",
     "redux-saga": "^1.0.2",
     "reduxsauce": "^1.1.0",
+    "reselect": "^4.0.0",
     "seamless-immutable": "^7.1.4",
     "styled-components": "^4.2.0"
   },

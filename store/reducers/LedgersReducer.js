@@ -4,7 +4,7 @@ import Immutable from 'seamless-immutable'
 /* ------------- Types and Action Creators ------------- */
 
 const { Types, Creators } = createActions({
-    ledgersIndexRequest: null,
+    ledgersIndexRequest: ['page', 'per_page'],
     ledgersIndexSuccess: ['data'],
     ledgersIndexFailure: null,
     ledgersCreateRequest: ['description', 'tag_list', 'total'],
@@ -21,22 +21,25 @@ export default Creators
 export const INITIAL_STATE = Immutable({
     isLoading: false,
     error: null,
-    ledgers: []
+    ledgers: [],
+    page: 1,
+    per_page: 30
 })
 
 /* ------------- Selectors ------------- */
 
-// export const GithubSelectors = {
+// export const ledgersSelectors = {
 //   selectAvatar: state => state.github.avatar
 // }
 
 /* ------------- Reducers ------------- */
 
-export const ledgersIndexRequest = (state) =>
+export const ledgersIndexRequest = (state, params) =>
     state.merge({ isLoading: true, error: [] })
 
 export const ledgersIndexSuccess = (state, { data }) => {
-    return state.merge({ isLoading: false, ledgers: data, error: [] })
+    const next_page = (data.length > 0) ? state.page + 1 : 0
+    return state.merge({ isLoading: false, ledgers: [...state.ledgers, ...data], page: next_page, error: [] })
 }
 
 export const ledgersIndexFailure = (state) => {

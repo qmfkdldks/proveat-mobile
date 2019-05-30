@@ -3,7 +3,7 @@ import apisauce from 'apisauce'
 import { AsyncStorage } from 'react-native'
 
 // our "constructor"
-const ProveatApi = (baseURL = 'http://192.168.43.192:3000/api/v1') => {
+const ProveatApi = (baseURL = 'http://192.168.0.225:3000/api/v1') => {
     // ------
     // STEP 1
     // ------
@@ -86,7 +86,8 @@ const ProveatApi = (baseURL = 'http://192.168.43.192:3000/api/v1') => {
     const signIn = (email, password) => api.post('companies/auth/sign_in', { email, password })
     const signOut = () => api.delete('companies/auth/sign_out')
     const floorsIndex = () => api.get('companies/floors')
-    const ledgersIndex = () => api.get('companies/ledgers')
+    const ordersIndex = (page, per_page) => api.get('companies/orders', { page, per_page })
+    const ledgersIndex = (page, per_page) => api.get('companies/ledgers', { page, per_page })
     const ledgersCreate = ({ description, tag_list, total }) => api.post('companies/ledgers', { ledger: { description, tag_list, total } })
 
     // ------
@@ -107,6 +108,7 @@ const ProveatApi = (baseURL = 'http://192.168.43.192:3000/api/v1') => {
         signIn,
         signOut,
         floorsIndex,
+        ordersIndex,
         ledgersIndex,
         ledgersCreate
     }
