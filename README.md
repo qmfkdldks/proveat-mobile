@@ -12,6 +12,8 @@ Web App is the core data collector and operator which helps us to measure busine
 
 
 ## Proveat Mobile
+![smartmockups_jwargpyk](https://user-images.githubusercontent.com/19354273/58640284-1b566a00-82cf-11e9-840a-d0843ec29507.jpg)
+
 Proveat Mobile is mobile app which connects to enterprise web POS system. 
 - Data Driven 
 
